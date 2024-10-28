@@ -1,28 +1,29 @@
-import { 
-  Center,
-  ChakraProvider,
-  Input,
-  Box,
-  Button
-} from '@chakra-ui/react'
-import { login } from './services/login';
+// App.tsx
+import React from 'react';
+import { ChakraProvider, Box, Center } from '@chakra-ui/react';
+import Card from './components/Card';
 
 function App() {
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    welcomeMessage();
+  };
+
+  const welcomeMessage = () => {
+    alert('Bem-vindo ao sistema!');
+  };
+
   return (
     <ChakraProvider>
-      <Box minHeight='100vh' backgroundColor='#9413dc' padding='25px'>
-        <Box backgroundColor='#FFFFFF' borderRadius='25px' padding='15px' >
-          <Center>
-            <h1>Faça o login</h1>
-          </Center>
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Center>
-            <Button onClick={login} colorScheme='teal' size='sm' width='100%' marginTop='5px'>
-              Button
-            </Button>
-          </Center>
-        </Box>
+      <Box minHeight="100vh" backgroundColor="#f0f4f8" padding="25px">
+        <Center>
+          <Card 
+            id={1} 
+            paragraph="Bem-vindo ao sistema" 
+            details="Faça login para continuar" 
+            onSubmit={handleLogin} 
+          />
+        </Center>
       </Box>
     </ChakraProvider>
   );
